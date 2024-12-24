@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <!--=============== REMIXICONS ===============-->
+   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+   <link rel="stylesheet" href="assets/css/styles.css">
+
+   <title>Gastronomy Site</title>
+
+   <style>
+      /* General Reset */
+      body {
+        font-size: 16px; /* Default size */
+         margin: 0;
+         font-family: Arial, sans-serif;
+         background-color: #f9f9f9;
+         color: #333;
+      }
+
+      /* Hero Section */
+      .hero {
+         background: url('') center/cover no-repeat; /* Add your hero background image URL */
+         color: white;
+         text-align: center;
+         padding: 5vw 5%; /* Make padding responsive */
+        }
+      html {
+   font-size: 70%; /* 1rem = 16px by default, will adjust based on zoom */
+}
+
+
+      .hero__title {
+         font-size: 3rem;
+         margin-bottom: 20px;
+      }
+
+      .hero__subtitle {
+         font-size: 1.5rem;
+         margin-bottom: 30px;
+      }
+
+      .hero__button {
+         display: inline-block;
+         padding: 10px 20px;
+         background-color: #ff6f61;
+         color: white;
+         text-decoration: none;
+         border-radius: 5px;
+         font-size: 1rem;
+         transition: background-color 0.3s;
+      }
+
+      .hero__button:hover {
+         background-color: #ff4c3b;
+      }
+
+      /* Categories Section */
+      .categories {
+         padding: 60px 20px;
+         background-color: #fff;
+         text-align: center;
+      }
+
+      .section__title {
+         font-size: 2.5rem;
+         margin-bottom: 40px;
+         color: #333;
+      }
+
+      .categories__grid {
+         display: grid;
+         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+         gap: 20px;
+      }
+
+      .category__card {
+         background-color: #f4f4f4;
+         border-radius: 10px;
+         overflow: hidden;
+         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+         transition: transform 0.3s;
+      }
+
+      .category__card:hover {
+         transform: translateY(-10px);
+      }
+
+      .category__image {
+         width: 100%;
+         height: 150px;
+         object-fit: cover;
+      }
+
+      .category__name {
+         padding: 15px;
+         font-size: 1.25rem;
+         font-weight: bold;
+         color: #555;
+      }
+
+      /* Recipes Section */
+      .recipes {
+         padding: 60px 20px;
+         background-color: #f9f9f9;
+      }
+
+      .recipes__grid {
+         display: grid;
+         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+         gap: 20px;
+      }
+
+      .recipe__card {
+         background-color: #fff;
+         border-radius: 10px;
+         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+         overflow: hidden;
+         transition: transform 0.3s;
+      }
+
+      .recipe__card:hover {
+         transform: translateY(-10px);
+      }
+
+      .recipe__image {
+         width: 100%;
+         height: 180px;
+         object-fit: cover;
+      }
+
+      .recipe__name {
+         padding: 15px;
+         font-size: 1.5rem;
+         font-weight: bold;
+         color: #333;
+      }
+
+      .recipe__description {
+         padding: 0 15px 15px;
+         font-size: 1rem;
+         color: #666;
+      }
+
+      /* Footer */
+      .footer {
+         background-color: #333;
+         color: white;
+         text-align: center;
+         padding: 20px;
+      }
+
+      .footer__text {
+         margin: 0;
+         font-size: 1rem;
+      }
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap');
+
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+        font-size: 16px; /* Default size */
+         margin: 0;
+         font-family: Arial, sans-serif;
+         background-color: #f9f9f9;
+         color: #333;
+      }
+
+.content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: relative;
+}
+
+.content .right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.right {
+    height: 100%;
+    width: 55%;
+    padding: 5vw 4vw;
+}
+
+.right h1 {
+    font-size: 4vw;
+    line-height: 4.4vw;
+}
+
+.right h1 span {
+    color: #D39D55;
+}
+
+.right p {
+    font-size: 1.2vw;
+    font-weight: 600;
+    color: #666;
+    width: 80%;
+    margin-top: 2vw;
+    margin-bottom: 2vw;
+}
+
+.left {
+    height: 100%;
+    width: 45%;
+    padding: 5vw 4vw;
+}
+
+.left img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+
+.icon {
+    display: flex;
+    gap: 20px;
+}
+
+.icon img {
+    height: 32px;
+    width: 32px;
+    object-fit: contain;
+    cursor: pointer;
+}
+
+.icon img:hover {
+    /* filter: grayscale(1); */
+    filter: blur(0.5px);
+}
+
+/* Responsive Code */
+
+@media (max-width:425px) {
+
+    .content {
+        flex-direction: column;
+    }
+
+    .right {
+        width: 100%;
+        height: 45%;
+        padding: 2vw 3vw;
+    }
+
+
+    .right h1 {
+        font-size: 9vw;
+        line-height: 9vw;
+    }
+
+    .right p {
+        font-size: 4vw;
+        width: 100%;
+        margin: 5vw 0;
+    }
+
+    .left {
+        width: 100%;
+        height: 55%;
+    }
+}
+@import url("https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&family=Oswald:wght@300..700&&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --ff-body: "Heebo", sans-serif;
+  --ff-heading: "Oswald", sans-serif;
+
+  --clr-primary-400: hsl(60 100% 50%);
+  --clr-neutral-900: hsl(0 0% 0%);
+  --clr-neutral-100: hsl(0 0% 100%);
+
+  --fs-xl: clamp(3rem, 1rem + 10vw, 6rem);
+  --fs-600: 2rem;
+  --fs-500: 1.5rem;
+  --fs-400: 1.125rem;
+}
+
+body,
+h1,
+h2,
+h3,
+p,
+blockquote {
+  margin: 0;
+  padding: 0;
+}
+
+/* body {
+  font-family: var(--ff-body);
+  font-size: var(--fs-400);
+  line-height: 1.6;
+} */
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+blockquote {
+  font-family: var(--ff-heading);
+  font-weight: 900;
+}
+
+h1 {
+  font-size: var(--fs-xl);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+blockquote {
+  font-size: var(--fs-600);
+  line-height: 1.2;
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+blockquote::before {
+  content: open-quote;
+}
+
+blockquote::after {
+  content: close-quote;
+}
+
+article {
+  display: grid;
+}
+
+article > *:not(img) {
+  padding: 0 2rem;
+}
+
+.lead {
+  font-size: var(--fs-500);
+  max-width: 40ch;
+  padding-top: -20px;
+}
+
+.flow > * + * {
+  margin-top: 1em;
+}
+
+.article-body {
+  columns: 2 30ch;
+  gap: 4rem;
+  max-width: 100ch;
+  padding-top: 3rem;
+}
+
+.article-body > p:first-child::first-letter {
+  font-size: 3em;
+  float: left;
+  line-height: 1;
+  margin: -0px 5px -10px -5px;
+  color: #ac752e;
+}
+
+.article-body > p:first-child::first-line {
+  font-weight: 500;
+}
+
+@media (min-width: 50em) {
+  article {
+    grid-template-columns: min(40%, 40rem) 1fr;
+  }
+
+  article > img {
+    grid-row: 1 / 4;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  article > *:not(img) {
+    grid-column: 2 / -1;
+  }
+}
+
+   </style>
+</head>
+<body>
+   <!--=============== HEADER ===============-->
+   <header class="header">
+   <nav class="nav container">
+     <div class="nav__data">
+      <a href="#" class="nav__logo"></a>
+            <img src="logo.png" alt="" style="width: 60px; height: auto; position: relative; top: 25px; left: -60px;">
+      </a>
+       <div class="nav__toggle" id="nav-toggle" "></div>
+         <!-- <i class="ri-menu-line nav__burger"></i>
+         <i class="i-close-line nav__close"></i> -->
+       </div>
+     </div>
+
+      <!--=============== NAV MENU ===============-->
+      <div class="nav__menu" id="nav-menu">
+         <ul class="nav__list">
+            <li><a href="home.html" class="nav__link">Home</a></li>
+
+            <!--=============== DROPDOWN 2 ===============-->
+            <li class="dropdown__item">
+               <div class="nav__link">
+                  Nos rubriques <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+               </div>
+
+               <ul class="dropdown__menu">
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class=""></i>  L'Anthropologie de la gastronomie
+
+                     </a>                          
+                  </li>
+
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class=""></i> L'histoire et l'authenticité
+                     </a>
+                  </li>
+
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="e"></i> L'inventaire des plats
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="e"></i>  Le patrimoine culinaire
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="e"></i> La science de l'alimentation
+                     </a>
+                  </li>
+
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="e"></i> Le rapport du tourisme
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="e"></i> Le rôle des restaurants dans le promotion
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="e"></i> Importance
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="e"></i> Messages
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="e"></i> Messages
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="ri-message-3-line"></i> Messages
+                     </a>
+                  </li>
+               </ul>
+            </li>
+
+            <!--=============== DROPDOWN 1 ===============-->
+            <li class="dropdown__item">
+               <div class="nav__link">
+                  Nos recettes <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+               </div>
+
+               <ul class="dropdown__menu">
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="salees"></i> salées 
+                     </a>                          
+                  </li>
+
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class=""></i> sucrées
+                     </a>
+                  </li>
+
+                  <!--=============== DROPDOWN SUBMENU ===============-->
+                  <li class="dropdown__subitem">
+                     <div class="dropdown__link">
+                        <i class="#"></i> autre <i class="ri-add-line dropdown__add"></i>
+                     </div>
+
+                     <ul class="dropdown__submenu">
+                        <li>
+                           <a href="#" class="dropdown__sublink">
+                              <i class="#"></i> Boissons et Infusions
+                           </a>
+                        </li>
+
+                        <li>
+                           <a href="#" class="dropdown__sublink">
+                              <i class="#"></i>Condiments et Épices
+                           </a>
+                        </li>
+
+                        <li>
+                           <a href="#" class="dropdown__sublink">
+                              <i class="#"></i> pâtisseries 
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+               </ul>
+            </li>
+            
+            <li><a href="#" class="nav__link">Livres</a></li>
+
+            <!--=============== DROPDOWN 2 ===============-->
+            <li class="dropdown__item">
+               <div class="nav__link">
+                  articles de recherche   <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+               </div>
+
+               <ul class="dropdown__menu">
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="ri-user-line"></i> #
+                     </a>                          
+                  </li>
+
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="ri-lock-line"></i> #
+                     </a>
+                  </li>
+
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="ri-message-3-line"></i> #
+                     </a>
+                  </li>
+               </ul>
+            </li>
+            <!--=============== DROPDOWN 2 ===============-->
+            <li class="dropdown__item">
+               <a href="president.html" class="nav__link">
+               <div class="nav__link">
+                  mot de Président <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+               </div>
+            </a>
+
+            </li>
+
+            <li><a href="contact.html" class="nav__link">Contact</a></li>
+         </ul>
+      </div>
+   </nav>
+</header>
+>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<script src="assets/js/main.js"></script>
+   </body>
+</html>
+    <!-- MENU END  -->
+    <main style="margin-top: -25px;">
+       <article>
+          <img
+          src="Sa.jpg"
+          alt="Salah chakor"
+          class="article-main-image"
+          style="margin-left: 20 px;"
+          
+          />
+          <div style="display: flex; align-items: center;">
+            <h1 style="margin-right: 20px; margin-left: 10 px; color: #ac752e;">SALAH CHAKOR</h1>
+            <img src="logo.png" alt="" style="width: 90px; height: auto;">
+          </div>
+        <!-- <p class="lead">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Recusandae,
+          veniam.
+        </p> -->
+        <div class="article-body flow" style="margin-top: -25px;">
+          <p>
+            Si le peintre cherche à plaire au public par la présentation de beaux tableaux parlants et attirants, le cuisinier, 
+            par ses préparations culinaires veut satisfaire la curiosité des fins gourmets au niveau de l’olfactif, l’odorat, le gustatif et nutritionnel. 
+            Une bonne cuisine faite avec doigté et avec goût est le moyen efficace pour relater la civilisation et les techniques des gens du pays et de la région  dont elle est originaire
+          </p>
+          <p>
+            Chaque région offre une variété de mets, selon les traditions, la culture, selon la civilisation de ses habitants et selon sa richesse en produits agricole, 
+            élevage, pêche…..etc. D’où le Royaume du Maroc est 
+            l’une des régions de la méditerranée qui se distinguent par leurs cuisines diététiques très riche et variées uniques au monde. 
+          </p>
+          <p>
+            Ces variétés ont également le rapport avec ce qui est disponible dans cette région comme produits alimentaires (légumes, fruits, viandes, …..etc.), 
+            c’est pourquoi la cuisine marocaine est très riche dans des régions de haute agriculture telles que le Tafilalet 
+            (Ancienne Sijilmassa), Meknès, Fès, Marrakech, Doukkala, Haouz, le Gharb..Etc.
+          </p>
+          <p>
+            Et étant donné que la nourriture est un des champs de la cultures et du patrimoine  d’une extrême importance, au même titre que la peinture, la musique, 
+            l’architecture, elle mérite alors bien d’être reconnue, mieux étudiée et développée.  
+            C’est ce qui va nous a amené à initier la création d’une Fondation de l’Académie Marocaine de la gastronomie en vue de créer  un dialogue entre les chercheurs et les professionnels du secteur du tourisme et de l’hôtellerie pour donner à cet art culinaire la place qu’il lui revient. 
+            C’est ce qui est à même aussi de démontrer que la nourriture est un domaine qui nécessite une attention particulière en tant que science humaine.
+          </p>
+          <p></p>
+          <blockquote>
+            Car la bonne nourriture est signe de convivialité
+          </blockquote>
+          <p>
+            l’art culinaire est très significatif dans la vie humaine des individus, 
+            chose qui fait apparaître chez eux ce signe d’hospitalité. 
+            C’est grâce à cet aspect que la cuisine marocaine est festive et 
+            créatrice d’union entre les membres des familles, des voisins et des amis.
+          </p>
+          <p>
+            La cuisine est aussi ce moyen le plus efficace pour assurer une bonne santé aux adultes et la croissance des enfants, 
+            le développement de l’esprit, de l’intelligence. 
+            Ceci a tendance à confondre la médecine est la bonne cuisine qui favorise l’’entretien et le maintien de l’organisme  et sa   réparation par un régime rigoureux.    
+          </p>
+          <p>
+            Cuisiner n’est donc pas uniquement faire à manger, 
+            ou une fête, mais aussi et surtout répondre à un besoin déclenché par 
+            l’organisme en tant nature et prévenir des malaises qui risquent d’arriver, 
+            et assurer la croissance de l’organisme. 
+            La cuisine marocaine, cette mosaïque d’art et de savoir-faire permet des réunions de famille à une même table, 
+            favorise des échanges et permet d’inculquer les règles de bonnes manières aux enfants. Le moment de la table est fort, 
+            c’est là où se traitent et se concluent les affaires se nouent des relations de tout genre. Aussi la gastronomie est un élément important pour faire la promotion du pays et créer la marque sa marque.
+          </p>
+          <p>
+            La cuisine permet également le développement de la diplomatie parallèle, 
+            C’est enfin l’occasion d’unir les individus, car comme on dit : 
+            la politique les sépare et la 
+            la gastronomie les unit. 
+          </p>
+          <p>La Fondation Académie Marocaine de la Gastronomie, 
+            première en son genre au Royaume,  
+            aura le mérite le mérite d’être un laboratoire et un conservatoire pour la sauvegarde de ce patrimoine culinaire du terroir. 
+            Et en plus des plats du terroir,  
+            nous aurons à organiser des cours de cuisine pour ceux qui ont cette curiosité de découvrir la culture et la civilisation de l’autre..
+
+          </p>
+        </div>
+      </article>
+    </main>
+   
+      </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+   </section>
+<br>
+
+   <!--=============== FOOTER ===============-->
+   <footer class="footer">
+      <p class="footer__text">© 2024 Moroccan Gastronomy . All Rights Reserved.</p>
+   </footer>
+</body>
+</html>

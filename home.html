@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <!--=============== REMIXICONS ===============-->
+   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+   <link rel="stylesheet" href="assets/css/styles.css">
+
+   <title>Gastronomy Site</title>
+
+   <style>
+      /* General Reset */
+      body {
+        font-size: 16px; /* Default size */
+         margin: 0;
+         font-family: Arial, sans-serif;
+         background-color: #f9f9f9;
+         color: #333;
+      }
+
+      /* Hero Section */
+      .hero {
+         background: url('') center/cover no-repeat; /* Add your hero background image URL */
+         color: white;
+         text-align: center;
+         padding: 5vw 5%; /* Make padding responsive */
+        }
+      html {
+         font-size: 70%; /* 1rem = 16px by default, will adjust based on zoom */
+      }
+
+
+      .hero__title {
+         font-size: 3rem;
+         margin-bottom: 20px;
+      }
+
+      .hero__subtitle {
+         font-size: 1.5rem;
+         margin-bottom: 30px;
+      }
+
+      .hero__button {
+         display: inline-block;
+         padding: 10px 20px;
+         background-color: #ff6f61;
+         color: white;
+         text-decoration: none;
+         border-radius: 5px;
+         font-size: 1rem;
+         transition: background-color 0.3s;
+      }
+
+      .hero__button:hover {
+         background-color: #ff4c3b;
+      }
+
+      /* Categories Section */
+      .categories {
+         padding: 60px 20px;
+         background-color: #fff;
+         text-align: center;
+      }
+
+      .section__title {
+         font-size: 2.5rem;
+         margin-bottom: 40px;
+         color: #563504;
+      }
+
+      .categories__grid {
+         display: grid;
+         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+         gap: 20px;
+      }
+
+      .category__card {
+         background-color: #f4f4f4;
+         border-radius: 10px;
+         overflow: hidden;
+         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+         transition: transform 0.3s;
+      }
+
+      .category__card:hover {
+         transform: translateY(-10px);
+      }
+
+      .category__image {
+         width: 100%;
+         height: 150px;
+         object-fit: cover;
+      }
+
+      .category__name {
+         padding: 15px;
+         font-size: 1.25rem;
+         font-weight: bold;
+         color: #555;
+      }
+
+      /* Recipes Section */
+      .recipes {
+         padding: 60px 20px;
+         background-color: #f9f9f9;
+      }
+
+      .recipes__grid {
+         display: grid;
+         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+         gap: 20px;
+      }
+
+      .recipe__card {
+         background-color: #fff;
+         border-radius: 10px;
+         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+         overflow: hidden;
+         transition: transform 0.3s;
+      }
+
+      .recipe__card:hover {
+         transform: translateY(-10px);
+      }
+
+      .recipe__image {
+         width: 100%;
+         height: 180px;
+         object-fit: cover;
+      }
+
+      .recipe__name {
+         padding: 15px;
+         font-size: 1.5rem;
+         font-weight: bold;
+         color: #333;
+      }
+
+      .recipe__description {
+         padding: 0 15px 15px;
+         font-size: 1rem;
+         color: #666;
+      }
+
+      /* Footer */
+      .footer {
+         background-color: #333;
+         color: white;
+         text-align: center;
+         padding: 20px;
+      }
+
+      .footer__text {
+         margin: 0;
+         font-size: 1rem;
+      }
+      /* Article */
+
+   /*
+LINKS:
+Typetura docs: https://docs.typetura.com/creating-with-typetura/creating-your-own-typographic-system
+Cubic Bezier: https://cubic-bezier.com/
+Fraunces: https://fraunces.undercase.xyz/
+Google variable fonts: https://css-tricks.com/getting-the-most-out-of-variable-fonts-on-google-fonts/
+Grid system: https://gist.github.com/scottkellum/bb46ea68c23e630842ee80c37513a3e6
+*/
+
+/* Import our variable font Fraunces */
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,100..900,0..100,0..1&family=Fraunces:ital,opsz,wght,SOFT,WONK@1,9..144,100..900,0..100,0..1&display=swap");
+
+/* Variables and page setup */
+
+html {
+
+
+	/* Typetura */
+	--tt-key: html;
+	--tt-max: 900;
+	--tt-ease: cubic-bezier(0, 0.78, 0.53, 1);
+
+	/* Grid */
+	--max-width: 1200px;
+	--columns: 6;
+	--gutter: 1.5rem;
+
+	/* Color */
+	--primary: #f4663a;
+	--background: #efeded;
+	--background-alt: #ffffff;
+	--text: #31355b;
+}
+@keyframes html {
+	0% {
+		font-size: 0%;
+	}
+
+	100% {
+		font-size: 125%;
+	}
+}
+* {
+	--grid: minmax(var(--gutter), 1fr)
+		repeat(
+			var(--columns),
+			minmax(
+				0,
+				calc(
+					(var(--max-width) - (var(--gutter) * (var(--columns) - 1))) /
+						var(--columns)
+				)
+			)
+		)
+		minmax(var(--gutter), 1fr);
+}
+
+/* Element styles */
+
+body {
+	margin: 0;
+}
+
+img {
+	width: 100%;
+}
+
+/* Typography */
+
+.masthead {
+	color: var(--primary);
+	mix-blend-mode: multiply;
+	text-align: center;
+	font-variation-settings: "WONK" 1, "SOFT" 30;
+	--tt-key: masthead;
+	--tt-max: 1200;
+	--tt-ease: ease-in-out;
+	margin: 0.5em 0 -0.5em;
+}
+@keyframes masthead {
+	0% {
+		font-size: 1rem;
+		margin-bottom: -0.45em;
+		font-weight: 600;
+	}
+	100% {
+		font-size: 6.5rem;
+		margin-bottom: -0.375em;
+		font-weight: 500;
+	}
+}
+
+.primary-headline {
+	--tt-key: primary-headline;
+	--tt-ease: cubic-bezier(1, 0, 1, 1);
+	--tt-max: 585;
+	line-height: 1;
+	font-variation-settings: "SOFT" 0, "WONK" 1;
+	margin: 0.5rem 0;
+}
+@keyframes primary-headline {
+	0% {
+		font-size: 1rem;
+		font-weight: 500;
+	}
+	100% {
+		font-size: 4rem;
+		font-weight: 300;
+	}
+}
+
+.meta {
+	font-style: italic;
+	margin: 0.25rem 0;
+	font-size: 0.75rem;
+}
+
+.entry-summary {
+	margin: 0.25rem 0;
+}
+
+/* Layout */
+
+.main {
+	column-gap: var(--gutter);
+	grid-template-columns: var(--grid);
+	padding: var(--gutter);
+}
+
+.entry {
+	margin-bottom: var(--gutter);
+}
+
+.entry,
+.entry-content {
+	display: flex;
+	flex-direction: column;
+}
+
+.entry-img {
+	aspect-ratio: 5 / 3;
+	object-fit: cover;
+}
+
+.entry-date {
+	order: -1;
+}
+
+/* Module overrides */
+
+.entry-lede time {
+	margin-bottom: 1rem;
+}
+
+.entry-lede time::after {
+	content: "";
+	display: block;
+	width: calc(100% + (var(--gutter) * 2));
+	height: 1px;
+	margin-left: calc(var(--gutter) * -2);
+	background: var(--primary);
+	mix-blend-mode: multiply;
+	margin-top: 0.67rem;
+}
+
+/* Breakpoints */
+
+@media (min-width: 30em) {
+	html {
+		--columns: 12;
+	}
+	.main,
+	.entry-lede {
+		padding: 0;
+		display: grid;
+	}
+
+	.entry,
+	.trending {
+		grid-column-start: 3;
+		grid-column-end: span 10;
+	}
+
+	.entry-lede {
+		column-gap: var(--gutter);
+		grid-template-columns: var(--grid);
+		grid-column-start: 1;
+		grid-column-end: span 14;
+		margin-bottom: 4rem;
+	}
+
+	.entry-lede > .entry-img {
+		aspect-ratio: auto;
+		grid-column-start: 1;
+		grid-column-end: span 10;
+	}
+
+	.entry-lede .entry-content {
+		grid-column-start: 3;
+		grid-column-end: span 11;
+		margin: -2.5rem calc(var(--gutter) * -1) 0;
+		background: var(--background-alt);
+		padding: 0.5rem var(--gutter) 1rem;
+	}
+}
+@media (min-width: 50em) {
+	html {
+		--columns: 24;
+	}
+
+	.main::before,
+	.main::after {
+		content: "";
+		display: block;
+		grid-column-start: 8;
+		grid-column-end: 26;
+		grid-row-start: 2;
+		grid-row-end: 3;
+		background: var(--background-alt);
+		margin: 0 calc(var(--gutter) * -1);
+		z-index: -1;
+	}
+	.main::after {
+		grid-column-start: 2;
+		background-color: var(--primary);
+		height: 1px;
+		mix-blend-mode: multiply;
+	}
+
+	.entry {
+		grid-column-end: span 9;
+		margin-bottom: var(--gutter);
+	}
+	.entry:nth-child(n + 2) {
+		margin-top: -2rem;
+		grid-row-start: 2;
+	}
+	.entry:nth-child(2) {
+		grid-column-start: 8;
+	}
+	.entry:nth-child(3) {
+		grid-column-start: 17;
+	}
+
+	.entry-lede {
+		column-gap: var(--gutter);
+		grid-template-columns: var(--grid);
+		grid-column-start: 1;
+		grid-column-end: span 26;
+		margin-bottom: 4rem;
+	}
+
+	.entry-lede > .entry-img {
+		aspect-ratio: auto;
+		grid-column-start: 1;
+		grid-column-end: span 13;
+	}
+
+	.entry-lede .entry-content {
+		grid-column-start: 14;
+		grid-column-end: span 12;
+		margin: 0.5rem 0;
+		padding: 4rem 0 0;
+		background: none;
+	}
+
+	.trending {
+		grid-row-start: 2;
+		grid-column-start: 2;
+		grid-column-end: span 6;
+		margin-top: var(--gutter);
+		transform: translatex(calc(var(--gutter) * -1));
+	}
+}
+
+      
+   </style>
+</head>
+<body>
+   <!--=============== HEADER ===============-->
+   <header class="header">
+    <nav class="nav container">
+      <div class="nav__data">
+         <a href="#" class="nav__logo">
+            <img src="logo.png" alt="" style="width: 60px; height: auto; position: relative; top: 25px; left: -60px;">
+            </a>  
+         <div class="nav__toggle" id="nav-toggle">
+            <i class="ri-menu-line nav__burger"></i>
+            <i class="i-close-line nav__close"></i>
+         </div>
+      </div>
+
+      <!--=============== NAV MENU ===============-->
+      <div class="nav__menu" id="nav-menu">
+         <ul class="nav__list">
+            <li><a href="home.html" class="nav__link">Home</a></li>
+
+            <!--=============== DROPDOWN 2 ===============-->
+            <li class="dropdown__item">
+               <div class="nav__link">
+                  Nos rubriques <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+               </div>
+
+               <ul class="dropdown__menu">
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class=""></i>  L'Anthropologie de la gastronomie
+
+                     </a>                          
+                  </li>
+
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class=""></i> L'histoire et l'authenticité
+                     </a>
+                  </li>
+
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="e"></i> L'inventaire des plats
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="e"></i>  Le patrimoine culinaire
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="e"></i> La science de l'alimentation
+                     </a>
+                  </li>
+
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="e"></i> Le rapport du tourisme
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="e"></i> Le rôle des restaurants dans le promotion
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="e"></i> Importance
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="e"></i> Messages
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="e"></i> Messages
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="ri-message-3-line"></i> Messages
+                     </a>
+                  </li>
+               </ul>
+            </li>
+
+            <!--=============== DROPDOWN 1 ===============-->
+            <li class="dropdown__item">
+               <div class="nav__link">
+                  Nos recettes <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+               </div>
+
+               <ul class="dropdown__menu">
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="salees"></i> salées 
+                     </a>                          
+                  </li>
+
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class=""></i> sucrées
+                     </a>
+                  </li>
+
+                  <!--=============== DROPDOWN SUBMENU ===============-->
+                  <li class="dropdown__subitem">
+                     <div class="dropdown__link">
+                        <i class="#"></i> autre <i class="ri-add-line dropdown__add"></i>
+                     </div>
+
+                     <ul class="dropdown__submenu">
+                        <li>
+                           <a href="#" class="dropdown__sublink">
+                              <i class="#"></i> Boissons et Infusions
+                           </a>
+                        </li>
+
+                        <li>
+                           <a href="#" class="dropdown__sublink">
+                              <i class="#"></i>Condiments et Épices
+                           </a>
+                        </li>
+
+                        <li>
+                           <a href="#" class="dropdown__sublink">
+                              <i class="#"></i> pâtisseries 
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+               </ul>
+            </li>
+            
+            <li><a href="#" class="nav__link">Livres</a></li>
+
+            <!--=============== DROPDOWN 2 ===============-->
+            <li class="dropdown__item">
+               <div class="nav__link">
+                  articles de recherche   <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+               </div>
+
+               <ul class="dropdown__menu">
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="ri-user-line"></i> #
+                     </a>                          
+                  </li>
+
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="ri-lock-line"></i> #
+                     </a>
+                  </li>
+
+                  <li>
+                     <a href="#" class="dropdown__link">
+                        <i class="ri-message-3-line"></i> #
+                     </a>
+                  </li>
+               </ul>
+            </li>
+            <!--=============== DROPDOWN 2 ===============-->
+            <li class="dropdown__item">
+               <a href="president.html" class="nav__link">
+               <div class="nav__link">
+                  mot de Président <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+               </div>
+            </a>
+
+            </li>
+
+            <li><a href="contact.html" class="nav__link">Contact</a></li>
+         </ul>
+      </div>
+   </nav>
+</header>
+>
+<br>
+<br>
+<br> 
+<br>
+<br>
+
+
+   <!--=============== HERO SECTION ===============-->
+   <section class="hero" style="background: url('featured-4.jpg') center/cover no-repeat; padding: 90px 20px; text-align: center; color: #fff; font-family: 'Poppins', sans-serif; margin-top: -30px;">
+    <h1 class="hero__title" style="font-size: 3rem; font-weight: 700; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);">
+      le magazine de la gastronomie marocaine
+    </h1>
+    <p class="hero__subtitle" style="font-size: 1.5rem; font-weight: 400; margin-bottom: 30px; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);">
+      Explorez des recettes, des traditions culinaires et bien plus encore    </p>
+    <a href="team.html" class="hero__button" style="font-size: 1.2rem; font-weight: 600; padding: 12px 25px; background-color: #ff7c57; color: #fff; text-decoration: none; border-radius: 25px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); transition: transform 0.2s, background-color 0.2s;">
+      membres du bureau 
+    </a>
+</section>
+
+ 
+
+   <!--=============== CATEGORIES SECTION ===============-->
+   <section class="categories">
+    <h2 class="section__title">Découvrez nos plat marocaine
+
+    </h2>
+    <div class="categories__grid">
+       <!-- Category 1 -->
+       <a href="#" class="category__card">
+          <img src="qwe.jpg" alt="Category 1" class="category__image"> <!-- Add image URL -->
+          <p class="category__name"></p>
+       </a>
+ 
+       <!-- Category 2 -->
+       <a href="#" class="category__card">
+          <img src="DSC06024.jpg" alt="Category 2" class="category__image"> <!-- Add image URL -->
+          <p class="category__name"></p>
+       </a>
+ 
+       <!-- Category 3 -->
+       <a href="#" class="category__card">
+          <img src="featured-5.jpg" alt="Category 3" class="category__image"> <!-- Add image URL -->
+          <p class="category__name"></p>
+       </a>
+              <!-- Category 4 -->
+              <a href="#" class="category__card">
+               <img src="DSC05932.jpg" alt="Category 3" class="category__image"> <!-- Add image URL -->
+               <p class="category__name"></p>
+            </a>
+                   <!-- Category 5 -->
+       <a href="#" class="category__card">
+         <img src="ho.jpg" alt="Category 3" class="category__image"> <!-- Add image URL -->
+         <p class="category__name"></p>
+      </a>
+    </div>
+ </section>
+ 
+
+   <!--=============== RECIPES SECTION ===============-->
+   
+      <header class="header">
+      </header>
+      <main class="main" style="font-size: 115%; 	
+      font-family: Fraunces, serif;
+      line-height: 1.35;
+      font-weight: 340;
+      color: var(--text);
+      background: var(--background);
+      padding-bottom: 20vh;">
+         <article class="entry entry-lede">
+            <img class="entry-img" src="DSC06023.jpg" alt="A handsome young horse in front of an expansive sky" />
+            <div class="entry-content">
+               <h1 class="entry-headline primary-headline">un tajine de boulettes de kefta (viande hachée)</h1>
+               <time class="entry-date meta">January 24, 2024</time>
+               <span class="entry-byline meta">by </span>
+               <p class="entry-summary">Les boulettes de viande hachée sont généralement cuites dans une sauce tomate parfumée aux épices comme le cumin, le paprika, le curcuma, et le gingembre. On peut également y ajouter des herbes fraîches comme le persil et la coriandre. Au centre, il semble y avoir un œuf poché ou cassé directement dans le tajine pour apporter une touche supplémentaire. Les rondelles de piment ou de poivron sur le dessus ajoutent une belle touche de décoration et de saveur..</p>
+            </div>
+         </article>
+         <article class="entry">
+            <img class="entry-img" src="passt.jpg" alt="The profile view of three majestic brown horses" />
+            <h1 class="entry-headline primary-headline">Pastilla aux fruits de mer : une élégance culinaire marocaine
+            </h1>
+            <time class="entry-date meta">feburary 26, 2024</time>
+            <span class="entry-byline meta">by </span>
+            <p class="entry-summary">La pastilla aux fruits de mer est un plat emblématique de la gastronomie marocaine, souvent réservé aux grandes occasions. Composée de feuilles croustillantes farcies d'un mélange raffiné de fruits de mer et de vermicelles parfumés aux épices, elle est décorée avec des crevettes pour une présentation majestueuse. Une véritable harmonie entre douceur et saveurs salées.</p>
+         </article>
+         <article class="entry">
+            <img class="entry-img" src="DSC05982.jpg" alt="The profile view of three majestic brown horses" />
+            <h1 class="entry-headline primary-headline"> tajine de poulet</h1>
+            <time class="entry-date meta">aout 27, 2024</time>
+            <span class="entry-byline meta">by Alex Trost</span>
+            <p class="entry-summary">Ce tajine savoureux combine du poulet tendre, mijoté dans une sauce parfumée au citron confit, aux olives vertes, et aux épices typiques comme le gingembre et le curcuma. Garni de tranches de citron frais et de coriandre, ce plat offre une explosion de saveurs acidulées et épicées, parfait pour une expérience culinaire authentique.</p>
+         </article>
+         <section class="trending">
+            <article class="trending-entry">
+               <time class="trending-entry-date meta">Decembre 25, 2024</time>
+               <h1 class="trending-entry-headline primary-headline"> L'histoire et l'authenticité</h1>
+            </article>
+            <article class="trending-entry">
+               <time class="trending-entry-date meta">Decembre 25, 2024</time>
+               <h1 class="trending-entry-headline primary-headline">  L'Anthropologie de la gastronomie</h1>
+            </article>
+            <article class="trending-entry">
+               <time class="trending-entry-date meta">Decembre 25, 2024</time>
+               <h1 class="trending-entry-headline primary-headline"> L'inventaire des plats</h1>
+            </article>
+            <article class="trending-entry">
+               <time class="trending-entry-date meta">Decembre 25, 2024</time>
+               <h1 class="trending-entry-headline primary-headline"> La science de l'alimentation</h1>
+            </article>
+         </section>
+      </main>
+   </section>
+
+
+
+   <!--=============== FOOTER ===============-->
+   <footer class="footer">
+      <p class="footer__text">© 2024 Gastronomy World. All Rights Reserved.</p>
+   </footer>
+</body>
+</html>
+lkhedma 
